@@ -12,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private int id;
 
     @Column(name = "name")
@@ -30,16 +30,12 @@ public class User {
 
 
     public User() {
-        if((this.document = DocumentFactory.createDocument("passport")) != null)
-            document.setUser(this);
     }
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
-        if((this.document = DocumentFactory.createDocument("passport")) != null)
-            document.setUser(this);
     }
 
     public int getId() {

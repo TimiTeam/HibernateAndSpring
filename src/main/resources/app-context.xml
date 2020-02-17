@@ -10,4 +10,8 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean id="userService" class="com.gmail.timurworkspace.service.serviceImpl.UserServiceImpl">
+        <property name="dao" ref="userDao"/>
+    </bean>
+
 </beans>

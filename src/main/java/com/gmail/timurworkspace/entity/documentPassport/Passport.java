@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Component
 @Entity
 @Table(name = "passport")
 public class Passport implements Document {

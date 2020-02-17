@@ -2,6 +2,7 @@ package com.gmail.timurworkspace;
 
 import com.gmail.timurworkspace.dao.AbstractDao;
 import com.gmail.timurworkspace.entity.User;
+import com.gmail.timurworkspace.service.AbstractService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -29,11 +30,11 @@ public class App
 
         ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
 
-        AbstractDao dao =(AbstractDao)context.getBean("userDao");
+        AbstractService service =(AbstractService)context.getBean("userService");
 
-        dao.saveObject(new User("hello", "test@mail.com", "pass1234"));
+        service.saveObject(new User("hello", "test@mail.com", "pass1234"));
 
-        User u = (User)dao.getById(1);
+        User u = (User)service.getById(1);
 
         System.out.println(u+" "+u.getDocument());
     }
