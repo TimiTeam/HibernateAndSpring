@@ -1,9 +1,10 @@
 package com.gmail.timurworkspace;
 
-import com.gmail.timurworkspace.dao.AbstractDao;
+import com.gmail.timurworkspace.config.AppConfig;
 import com.gmail.timurworkspace.entity.User;
 import com.gmail.timurworkspace.service.AbstractService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
@@ -28,7 +29,9 @@ public class App
     public static void main( String[] args )
     {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
+        //ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         AbstractService service =(AbstractService)context.getBean("userService");
 
