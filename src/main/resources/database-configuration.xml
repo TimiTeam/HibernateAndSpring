@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <import resource="datasource-testDb.xml"/>
+
+    <tx:annotation-driven/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="hibernateProperties" ref="propertiesHibernate"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.gmail.timurworkspace.entity"/>
+    </bean>
+
+    <util:properties id="propertiesHibernate">
+        <prop key="hibernate.current_session_context_class">thread</prop>
+        <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+        <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+        <prop key="hibernate.connection.pool_size">1</prop>
+        <prop key="hibernate.show_sql">true</prop>
+    </util:properties>
+
+</beans>
